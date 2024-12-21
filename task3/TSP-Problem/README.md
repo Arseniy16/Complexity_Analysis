@@ -25,3 +25,44 @@ Runtime complexity can be estimated as O(n^2).
 
 #### Notes
 We will consider a complete graph in which all cities connect to all other. In my approach, there is a file *distances.txt*, which contains the weights of the edges between cities. To build graph we will use adjacency matrix (20x20) for 20 cities.
+
+#### Usage
+Install google-benchmark, if you want test program.
+To compile program:
+```
+make
+./main 
+```
+
+To test program, uncomment 	```#define TEST``` in *main.cpp* 
+And launch:
+``` 
+make
+./main --benchmark_out="output.json"  --benchmark_out_format=json
+python3 test_data.py
+```
+After that you will get **image.png** that shows time measurement depending on gyperparameters like (cities, generations, tours, percentage of mutations) for both algorithms.
+
+#### Test
+ Tests with benchmarks look like this:
+![image1](test/screen1.png)
+Than we get *output.json* and using *test_data.py*, according to the "family_index", read "real_time" and "per_family_instance_index".
+![image2](test/screen2.png)
+Let's look at the graphic with params [cities=5, generations=(1, 20, 1), tours=(2, 10, 1 ), percentage of mutations = (0, 100, 25) ]:
+![image3](test/image5.png)
+And now let's look at other graphics with params [cities=10, generations=(1, 10, 2), tours=(2, 4, 1), percentage of mutations = (0, 100, 25) ]:
+For Brute-Force algorithm:
+![image4](test/image10-1.png)
+For Genetic Algorithm:
+![image5](test/image10-2.png)
+As you can see, they differ greatly depending on cities and other params.
+Also we get the comparison table for both algorithms 
+```markdown
+| Cities | Optimal Cost | Time Brute Force (s) | GA Cost | Time GA (s) | % of Optimal |
+|:------:|:------------:|:--------------------:|:-------:|:-----------:|:------------:|
+|   10   |    319,88    |        0,6816        |  419,24 |    0,4175   |      131     |
+|   11   |    388,18    |        33,4417       |  607,34 |    0,5087   |      156     |
+|   12   |              |                      |  691,78 |    0,7634   |              |
+|   13   |              |                      |  760,52 |    0,9843   |              |
+|   14   |              |                      |  858,96 |    1,1855   |              |
+```

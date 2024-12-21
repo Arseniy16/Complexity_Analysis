@@ -1,0 +1,10 @@
+image 9-10
+gen: 1-10:2
+tour: 2-4:1
+percent: 0-100:25
+
+image 5-7
+gen: 1-20:1
+tour: 2-10:1
+percent: 0-100:25
+
