@@ -44,18 +44,40 @@ python3 test_data.py
 After that you will get **image.png** that shows time measurement depending on gyperparameters like (cities, generations, tours, percentage of mutations) for both algorithms.
 
 #### Test
- Tests with benchmarks look like this:
-![image1](test/screen1.png)
+
+Tests with benchmarks look like this:
+![image1](test/screen1.png){width=50%}
+
 Than we get *output.json* and using *test_data.py*, according to the "family_index", read "real_time" and "per_family_instance_index".
-![image2](test/screen2.png)
+
+<p align="center" width="100%">
+    <img width="40%" src="test/screen2.png">
+</p>
+
 Let's look at the graphic with params [cities=5, generations=(1, 20, 1), tours=(2, 10, 1 ), percentage of mutations = (0, 100, 25) ]:
-![image3](test/image5.png)
+<!-- ![image3](test/image5.png) -->
+
+<p align="center" width="100%">
+    <img width="40%" src="test/image5.png">
+</p>
+
 And now let's look at other graphics with params [cities=10, generations=(1, 10, 2), tours=(2, 4, 1), percentage of mutations = (0, 100, 25) ]:
+
 For Brute-Force algorithm:
-![image4](test/image10-1.png)
+<!-- ![image4](test/image10-1.png) -->
+
+<p align="center" width="100%">
+    <img width="40%" src="test/image10-1.png">
+</p>
+
 For Genetic Algorithm:
-![image5](test/image10-2.png)
+<!-- ![image5](test/image10-2.png) -->
+<p align="center" width="100%">
+    <img width="40%" src="test/image10-2.png">
+</p>
+
 As you can see, they differ greatly depending on cities and other params.
+
 Also we get the comparison table for both algorithms 
 ```markdown
 | Cities | Optimal Cost | Time Brute Force (s) | GA Cost | Time GA (s) | % of Optimal |
