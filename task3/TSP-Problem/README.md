@@ -46,19 +46,22 @@ After that you will get **image.png** that shows time measurement depending on g
 #### Test
 
 Tests with benchmarks look like this:
-![image1](test/screen1.png){width=50%}
+<!-- ![image1](test/screen1.png){width=50%} -->
+<p align="center" width="100%">
+    <img width="60%" src="test/screen1.png">
+</p>
 
 Than we get *output.json* and using *test_data.py*, according to the "family_index", read "real_time" and "per_family_instance_index".
 
 <p align="center" width="100%">
-    <img width="40%" src="test/screen2.png">
+    <img width="60%" src="test/screen2.png">
 </p>
 
 Let's look at the graphic with params [cities=5, generations=(1, 20, 1), tours=(2, 10, 1 ), percentage of mutations = (0, 100, 25) ]:
 <!-- ![image3](test/image5.png) -->
 
 <p align="center" width="100%">
-    <img width="40%" src="test/image5.png">
+    <img width="70%" src="test/image5.png">
 </p>
 
 And now let's look at other graphics with params [cities=10, generations=(1, 10, 2), tours=(2, 4, 1), percentage of mutations = (0, 100, 25) ]:
@@ -67,13 +70,13 @@ For Brute-Force algorithm:
 <!-- ![image4](test/image10-1.png) -->
 
 <p align="center" width="100%">
-    <img width="40%" src="test/image10-1.png">
+    <img width="60%" src="test/image10-1.png">
 </p>
 
 For Genetic Algorithm:
 <!-- ![image5](test/image10-2.png) -->
 <p align="center" width="100%">
-    <img width="40%" src="test/image10-2.png">
+    <img width="60%" src="test/image10-2.png">
 </p>
 
 As you can see, they differ greatly depending on cities and other params.
