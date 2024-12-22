@@ -23,13 +23,21 @@ For mutations we will make a minor change (randomly swap 3 cities) to make a dif
 In our project we will use termination way as we reach a fixed number of generations.
 
 Let's estimate the complexity of genetic algorithm in this imlementation:
+
 Let's **n** = num of cities.
+
 To choose the initial population of tours - **O(n * tours)**.
+
 To evaluate the cost (distance) of each individual tour - **O(n)**
+
 To select best-ranking individuals from each generation - **O(2 * n * tours)** ~ **O(n * tours)**
+
 To create mutations by switching out 3 cities - **O(n * tours * percent_mutations/100)**
+
 To add new permutations to fill out the current generation - **O(n * tours)**
+
 To evaluate the fitness of each individual tour - **O(n * tours)**
+
 In summary, considering cities, generations, tours and percentage of mutations we get the complexity **O(n * gen * tours)**
 
 #### Notes
@@ -39,6 +47,7 @@ We will consider a complete graph in which all cities connect to all other. In m
 
 #### Usage
 Install google-benchmark, if you want test program.
+
 To compile (default) program:
 ```
 make
@@ -59,6 +68,7 @@ python3 test_data.py
 ```
 
 With **BENCHMARK_OUT=ON** you will save test data in file **"output.json"** .
+
 Also you will get **image.png**, that shows time measurement depending on gyperparameters like (cities, generations, tours, percentage of mutations) for both algorithms.
 
 #### Test
