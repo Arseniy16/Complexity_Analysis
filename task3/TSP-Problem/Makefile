@@ -2,12 +2,25 @@ CC = g++
 
 CFLAGS = -std=c++23
 
-LIBS = -lm -lbenchmark -lpthread
+LDFLAGS = -lm -lbenchmark -lpthread
 
-default: make
+BENCHMARK_OUT_FILE = "output.json"
+BENCHMARK_OUT_FORMAT = json
 
-make: main.o geneticAlg.o userParse.o
-	$(CC) $(CFLAGS) -o main main.o geneticAlg.o userParse.o $(LIBS)
+TEST ?= OFF
+BENCHMARK_OUT ?= OFF
+
+SRC = main.cpp geneticAlg.cpp userParse.cpp
+OBJ = $(SRC:.cpp=.o)
+PROG = main
+
+.PHONY: make run clean
+
+default: make 
+
+make: $(OBJ)
+	$(CC) $(CFLAGS) -o $(PROG) $(OBJ) $(LDFLAGS)
+
 
 geneticAlg.o: geneticAlg.cpp geneticAlg.hpp
 	$(CC) $(CFLAGS) -c geneticAlg.cpp
@@ -16,7 +29,18 @@ userParse.o: userParse.cpp userParse.hpp
 	$(CC) $(CFLAGS) -c userParse.cpp
 
 main.o: main.cpp geneticAlg.hpp userParse.hpp
+ifeq ($(TEST), ON)
+	$(CC) $(CFLAGS) -c main.cpp -DTEST
+else
 	$(CC) $(CFLAGS) -c main.cpp
+endif
+
+run: $(PROG)
+ifeq ($(BENCHMARK_OUT), ON)
+	./$(PROG) --benchmark_out=$(BENCHMARK_OUT_FILE) --benchmark_out_format=$(BENCHMARK_OUT_FORMAT)
+else 
+	./$(PROG)
+endif
 
 clean:
-	$(RM) *.o *~ main
+	$(RM) $(OBJ) $(PROG)

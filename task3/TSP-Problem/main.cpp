@@ -9,7 +9,7 @@
 
 #include "benchmark/benchmark.h" // install google-benchmark to test
 
-// #define TEST
+// #define TEST // it's activated through the makefile
 
 #ifdef TEST
 
@@ -131,11 +131,11 @@ double brute_force_algo(userParse & parse_obj) {
 
 void make_args(benchmark::internal::Benchmark * benchmark) 
 {
-    for (auto city =11; city < 12; ++city){
+    for (auto city = 9; city < 10; ++city){
         if (city % 4 == 0) continue;
-        for (auto gen = 1; gen < 10; gen += 2) {
-            for (auto tour = 2; tour < 4; tour += 1) {
-                for (auto percent = 0; percent < 100; percent += 25) {
+        for (auto gen = 1; gen < 100; gen += 10) {
+            for (auto tour = 2; tour < 7; tour += 2) {
+                for (auto percent = 0; percent < 100; percent += 50) {
                     benchmark->Args({ city, gen, tour, percent });
                 }
             }
@@ -205,21 +205,18 @@ void test_brute_force(benchmark::State & state) {
 
         // benchmark::DoNotOptimize(&func);
     }
-
     state.SetComplexityN(state.range(0));
 
 }
-
-// benchmark::kMillisecond
-BENCHMARK(test_genetic)->Apply(make_args)->Iterations(1)->UseManualTime()->Unit(benchmark::kMicrosecond);
-BENCHMARK(test_brute_force)->Apply(make_args)->Iterations(1)->UseManualTime()->Unit(benchmark::kMicrosecond);
+// kMicrosecond
+BENCHMARK(test_genetic)->Apply(make_args)->Iterations(1)->UseManualTime()->Unit(benchmark::kMillisecond); //->Complexity();
+BENCHMARK(test_brute_force)->Apply(make_args)->Iterations(1)->UseManualTime()->Unit(benchmark::kMillisecond); //->Complexity();
 
 
 BENCHMARK_MAIN();
 
 
 #else 
-// #ifndef DEBUG
 
 int main() {
 
@@ -368,5 +365,5 @@ int main() {
     return 0;
 }
 
-#endif
+#endif // TEST
 

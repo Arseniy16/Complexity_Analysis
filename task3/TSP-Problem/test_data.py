@@ -15,9 +15,9 @@ for benchmark in dictionary["benchmarks"]:
         })
     elif benchmark["family_index"] == 1:
         results_brute.append({
-        "per_family_instance_index": benchmark["per_family_instance_index"],
-        "real_time": benchmark["real_time"]
-    })
+            "per_family_instance_index": benchmark["per_family_instance_index"],
+            "real_time": benchmark["real_time"]
+        })
 
 
 
@@ -41,8 +41,8 @@ dict_brute = {x_values_brute[i]: y_values_brute[i] for i in range(len(x_values_b
 sort_dict_brute = dict(sorted(dict_brute.items(), key=lambda item: item[1]))
 
 
-print(list(sort_dict_gen.items())[:10])
-print(list(sort_dict_brute.items())[:10])
+# print(list(sort_dict_gen.items())[:10])
+# print(list(sort_dict_brute.items())[:10])
 
 
 ## BAR GRAPH ##
@@ -54,7 +54,7 @@ plt.bar(x_values_gen, y_values_gen, color='red', alpha=0.8)
 plt.bar(x_values_brute, y_values_brute, color='green', alpha=0.4)
 
 plt.xlabel('per_family_instance_index') 
-plt.ylabel('real_time, us')
+plt.ylabel('real_time, ms')
 plt.title("Time measurement relative to gyperparams of 2 algorithms")
 
 plt.legend(['Genetic algorithm', 'Brute-Force algorithm'])
